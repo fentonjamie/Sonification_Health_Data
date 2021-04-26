@@ -5,17 +5,9 @@ from microbit import *
 
 MIDIData = [36, 36, 36, 36, 36, 36, 45, 50, 55, 62, 55, 52, 47, 57, 47, 59, 67, 43, 59, 59, 36, 38, 43, 36]
 
-time = ['12 AM', '1 AM', '2 AM', '3 AM', '4 AM', '5 AM', '6 AM', '7 AM', '8 AM', '9 AM', '10 AM', '11 AM', '12 PM', '1 PM', '2 PM', '3 PM', '4 PM', '5 PM', '6 PM', '7 PM', '8 PM', '9 PM', '10 PM', '11 PM']
-
 MIDIDataHeart = [64, 66, 64, 61, 57, 58, 58, 59, 70, 100, 76, 70, 61, 68, 72, 79, 104, 66, 82, 98, 62, 60, 63, 65]
 
 MIDIVelocityData = [78, 81, 76, 75, 70, 71, 71, 72, 85, 122, 92, 86, 74, 83, 88, 96, 127, 81, 100, 120, 75, 73, 77, 79]
-
-#MIDIBeatData = [772, 729, 802, 827, 903, 887, 884, 876, 665, 92, 550, 650, 833, 700, 620, 494, 19, 736, 433, 125, 821, 859, 791, 754]
-
-#Zip the arrays which means they can be accessed at the same time when sending to DAW
-
-zipped = zip(MIDIData, MIDIDataHeart, time, MIDIVelocityData, MIDIBeatData)
 
 #These functions set up the MIDI controller
 #If the values are out of the value scope then return
@@ -45,7 +37,7 @@ def midiNoteOff(chan, n, vel):
 def Start():
     uart.init(baudrate=31250, bits=8, parity=None, stop=1, tx=pin0)
 
-#Set last button values to false to begin with as no buttons have been pressed
+#Set last button values to false to begin with as no buttons have been pressed, these will change when buttons have been pressed
 
 Start()
 lastA = False
@@ -58,7 +50,7 @@ lastD = False
 timer = 0
 i = 0
 
-# create the functions to play the MIDI note data, these return the value of the array that
+# create the functions to play the MIDI note data, these return the value of the MIDI array that
 # the iteration variable i is currently at
 
 def PlayMidiNote():
